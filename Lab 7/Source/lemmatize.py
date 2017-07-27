@@ -20,16 +20,18 @@ print(l)
 
 #word frequency
 
-counts = dict()
-words = l.split()
+cap_words = [word.upper() for word in words] #capitalizes all the words
 
-for word in words:
-        if word in counts:
-            counts[word] += 1
-        else:
-            counts[word] = 1
+word_counts = Counter(cap_words)
 
-print(counts)
+
+# Top 5 words in the given file
+print(word_counts.most_common())
+for k, v in word_counts.most_common(5):
+    print('%s: %i' % (k, v))
+
+
+
 
 #removing all verbs using POS tags
 for i in l:
